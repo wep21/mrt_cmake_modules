@@ -2,6 +2,17 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* FindGeographicLib: Fix for GeographicLib 2.* and Windows
+  Since GeographicLib version 2, the library name changed from `libGeographic.so` to `libGeographicLib.so`, see https://github.com/geographiclib/geographiclib/blob/5e4425da84a46eb70e59656d71b4c99732a570ec/NEWS#L208 .
+  To ensure that GeographicLib 2.* is found correcty, I think we should add also `GeographicLib` to the names used by `find_library`.
+  Furthermore, on Windows the import library is called `GeographicLib-i.lib` (see https://github.com/geographiclib/geographiclib/blob/v2.3/src/CMakeLists.txt#L119), so to find the library correctly on Windows we also look for GeographicLib-i .
+* Add ZeroMQ
+* Add zxing-cpp to cmake.yaml.
+* hard coded ignore files which start with "mocs_compilation and delete the corresponding gcda file, because otherwise our current coverage pipeline fails.
+* Contributors: Jan-Hendrik Pauls, Johannes Beck, Kevin Rösch, Silvio Traversaro
+
 1.0.9 (2021-11-26)
 ------------------
 * Set python version
